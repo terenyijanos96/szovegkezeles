@@ -8,21 +8,22 @@ def nagybetus():
 
 
 def hosszabb_mint10():
-    if len(szoveg) > 10:
-        return len(szoveg)
+    kimenet = False
 
-    return False
+    if len(szoveg) > 10:
+        kimenet = len(szoveg)
+
+    return kimenet
 
 
 def betu3():
-    global szoveg
+
     szoveg = input("Kérek egy legalább 3-betűs szöveget!:\n>>")
     while len(szoveg) < 3:
         szoveg = input("HIBA! Túl rövid a szöveg! Legalább 3 karakternek kell lennie!:\n>>")
 
 
 def elso_a():
-    global szoveg
     szoveg = input('Kérek egy szöveget és megkeresem az első "a"-betűt!:\n>>')
     i = 0
     elso_index = None
@@ -38,28 +39,25 @@ def elso_a():
 
 
 def feketeoves():
-    global szoveg
-    betu_ista = []
-    betu_szam_lista = []
 
     i = 0
+    betu_lista = []
     while i < len(szoveg):
-        if szoveg[i] not in betu_ista:
-            betu_ista.append(szoveg[i])
+        if szoveg[i] not in betu_lista:
+            betu_lista.append(szoveg[i])
         i += 1
 
     i = 0
+    kimenet = ""
 
-    while i < len(betu_ista):
+    while i < len(betu_lista):
         j = 0
-
+        szamlalo = 0
         while j < len(szoveg):
-            if betu_ista[i] == szoveg[i]:
-                c+=1
-            j+=1
-            betu_szam_lista.append(c)
+            if betu_lista[i] == szoveg[j]:
+                szamlalo += 1
+            j += 1
+        kimenet += f"{betu_lista[i]}: {szamlalo} darab\n"
         i += 1
 
-    print(betu_ista)
-    print(betu_szam_lista)
-
+    return kimenet
